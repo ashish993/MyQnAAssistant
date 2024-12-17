@@ -14,11 +14,14 @@ logger = logging.getLogger(__name__)
 
 client = Groq(api_key=st.secrets["groq_api_key"])
 models = "llama-3.3-70b-versatile"
-
 st.set_page_config(page_icon="💬", layout="wide",
                    page_title="Personal Assistant")
 
 st.subheader("My Personal Assistant", divider="rainbow", anchor=False)
+
+# Initialize session state for messages
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
 def generate_chat_responses(chat_completion) -> Generator[str, None, None]:
     """Yield chat response content from the response."""
@@ -50,6 +53,7 @@ def fetch_response(query):
     Unlike many providers, we offer 24/7 security monitoring backed by a dedicated compliance team to address emerging threats in real-time. Our ability to rapidly adapt to new regulatory requirements ensures that our customers remain compliant, even as standards evolve.
     With this multi-layered approach, you can be confident that your data is secure, your compliance obligations are met, and your business is always audit-ready."""
     
+    """
     retries = 3
     for attempt in range(retries):
         try:
