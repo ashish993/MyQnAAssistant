@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 # ...existing code...
 
-client = Groq(api_key="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")
+client = Groq(api_key=st.secrets["groq_api_key"])
 models = "gemma2-9b-it"
 
 st.set_page_config(page_icon="💬", layout="wide",
