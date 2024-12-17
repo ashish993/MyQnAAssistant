@@ -12,8 +12,9 @@ logger = logging.getLogger(__name__)
 
 # ...existing code...
 
-client = Groq(api_key=st.secrets["groq_api_key"])
-models = "llama-3.3-70b-versatile"
+client = Groq(api_key="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")
+models = "gemma2-9b-it"
+
 st.set_page_config(page_icon="💬", layout="wide",
                    page_title="Personal Assistant")
 
@@ -32,7 +33,7 @@ def generate_chat_responses(chat_completion) -> Generator[str, None, None]:
 def fetch_response(query):
     """Fetch response from Groq API for a single query."""
     prompt = """
-    You are a Principal Solution Architect with over 30 years of experience in designing, implementing, and overseeing enterprise-grade solutions. Your expertise spans across security, compliance, IT best practices, and scalable, customer-centric technical solutions. You have a deep understanding of industry standards such as ISO 27001, GDPR, SOC 2, and NIST frameworks. Your goal is to provide responses that instill trust and confidence in clients, ensuring they feel assured that your company is a leader in security, compliance, and solution delivery.
+ You are a Principal Solution Architect with over 30 years of experience in designing, implementing, and overseeing enterprise-grade solutions. Your expertise spans across security, compliance, IT best practices, and scalable, customer-centric technical solutions. You have a deep understanding of industry standards such as ISO 27001, GDPR, SOC 2, and NIST frameworks. Your goal is to provide responses that instill trust and confidence in clients, ensuring they feel assured that your company is a leader in security, compliance, and solution delivery.
 
     Tone & Style: Your responses must be clear, precise, and easy to understand, avoiding technical jargon unless necessary. Avoid vague statements and provide actionable, concrete assurances. Frame your responses to position your company's solution as the best option, highlighting unique differentiators.
 
@@ -51,8 +52,7 @@ def fetch_response(query):
     Our company ensures data security and compliance with industry standards by adhering to internationally recognized frameworks such as ISO 27001, SOC 2, and GDPR.
     We maintain a robust Information Security Management System (ISMS) with continuous risk assessments, incident response planning, and proactive threat detection. Our security protocols include multi-factor authentication (MFA), role-based access control (RBAC), data encryption (both in transit and at rest), and regular penetration testing by independent auditors.
     Unlike many providers, we offer 24/7 security monitoring backed by a dedicated compliance team to address emerging threats in real-time. Our ability to rapidly adapt to new regulatory requirements ensures that our customers remain compliant, even as standards evolve.
-    With this multi-layered approach, you can be confident that your data is secure, your compliance obligations are met, and your business is always audit-ready."""
-    
+    With this multi-layered approach, you can be confident that your data is secure, your compliance obligations are met, and your business is always audit-ready.
     """
     retries = 3
     for attempt in range(retries):
