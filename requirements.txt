@@ -1,0 +1,7 @@
+streamlit
+pandas
+groq
+Generator
+concurrent.futures
+logging
+time
